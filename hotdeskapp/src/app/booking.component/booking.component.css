@@ -1,0 +1,521 @@
+/* ===== EQUAL HEIGHT CONTAINERS WITH SCROLLING ===== */
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  margin-bottom: 30px;
+  height: calc(100vh - 200px); /* ✅ Set a fixed height based on viewport */
+  min-height: 600px; /* ✅ Minimum height for small screens */
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+    height: auto; /* ✅ Auto height on mobile for better UX */
+    min-height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/* ===== SIDEBAR WITH EQUAL HEIGHT ===== */
+.sidebar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  height: 100%; /* ✅ Fill the grid container height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* ✅ Prevent overflow */
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    padding: 20px;
+    border-radius: 15px;
+    height: auto; /* ✅ Auto height on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 15px;
+    border-radius: 12px;
+  }
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  color: #333;
+  flex-shrink: 0; /* ✅ Don't shrink the header */
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* ✅ Take remaining space */
+  overflow-y: auto; /* ✅ Allow scrolling if content overflows */
+}
+
+.selected-desk {
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+  color: #666;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-selection {
+  color: #999;
+}
+
+.booking-rules {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e8f4fd;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  flex-shrink: 0; /* ✅ Don't shrink the rules section */
+}
+
+/* ===== DESK GRID CONTAINER WITH EQUAL HEIGHT ===== */
+.desk-grid-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  height: 100%; /* ✅ Fill the grid container height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* ✅ Prevent overflow */
+}
+
+@media (max-width: 768px) {
+  .desk-grid-container {
+    padding: 20px;
+    border-radius: 15px;
+    height: auto; /* ✅ Auto height on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .desk-grid-container {
+    padding: 15px;
+    border-radius: 12px;
+  }
+}
+
+.desk-grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+  flex-shrink: 0; /* ✅ Don't shrink the header */
+}
+
+@media (max-width: 768px) {
+  .desk-grid-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .desk-grid-header h2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .desk-grid-header h2 {
+    font-size: 1.1rem;
+  }
+}
+
+.desk-grid-header h2 {
+  margin: 0;
+}
+
+.legend {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .legend {
+    gap: 10px;
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .legend {
+    gap: 8px;
+  }
+}
+
+/* ===== SCROLLABLE DESK GRID ===== */
+.desk-grid-wrapper {
+  flex: 1; 
+  overflow-y: auto; 
+  overflow-x: hidden; 
+  padding-right: 5px; 
+}
+
+/* ✅ Custom scrollbar styling */
+.desk-grid-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.desk-grid-wrapper::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.desk-grid-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 10px;
+}
+
+.desk-grid-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.5);
+}
+
+.desk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding-bottom: 20px; /* ✅ Space at bottom for better scrolling */
+}
+
+@media (max-width: 768px) {
+  .desk-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding-bottom: 15px;
+  }
+  
+  .desk-grid-wrapper {
+    overflow-y: visible; /* ✅ Disable scrolling on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .desk-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+@media (max-width: 375px) {
+  .desk-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.no-desks {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .no-desks {
+    padding: 30px;
+    font-size: 14px;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .no-desks {
+    padding: 20px;
+    font-size: 13px;
+  }
+  /* Add to booking.component.css */
+
+/* ===== TIME SLOTS STYLING ===== */
+/* ===== IMPROVED TIME SLOTS STYLING ===== */
+.time-slots-container {
+  border: 1px solid #e1e5e9;
+  border-radius: 12px;
+  padding: 20px;
+  background: #f8f9fa;
+  margin-bottom: 15px;
+}
+
+.preset-slots, .custom-slots {
+  margin-bottom: 20px;
+}
+
+.preset-slots h4, .custom-slots h4 {
+  margin: 0 0 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ===== PRESET SLOTS GRID ===== */
+.slot-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.slot-btn {
+  padding: 12px 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slot-btn:hover {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.slot-btn.selected {
+  border-color: #667eea;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* ===== CUSTOM SLOTS ===== */
+.custom-slots {
+  border-top: 1px solid #e1e5e9;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+.custom-slot-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 8px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e1e5e9;
+}
+
+.time-input {
+  flex: 1;
+  max-width: 120px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+}
+
+.time-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.time-separator {
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 4px;
+}
+
+.btn-sm {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== ADD TIME SLOT BUTTON ===== */
+.btn-secondary {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  color: #666;
+  font-weight: 500;
+}
+
+.btn-secondary:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+/* ===== SELECTED SLOTS ===== */
+.selected-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e1e5e9;
+  min-height: 50px;
+  align-items: flex-start;
+}
+
+.selected-slot-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+.remove-slot {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+
+.remove-slot:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== RESPONSIVE IMPROVEMENTS ===== */
+@media (max-width: 768px) {
+  .time-slots-container {
+    padding: 15px;
+  }
+  
+  .slot-buttons {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .slot-btn {
+    padding: 10px 14px;
+    font-size: 12px;
+    min-height: 40px;
+  }
+  
+  .custom-slot-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  
+  .time-input {
+    max-width: none;
+    width: 100%;
+  }
+  
+  .time-separator {
+    text-align: center;
+    margin: 4px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-slots-container {
+    padding: 12px;
+  }
+  
+  .preset-slots h4, .custom-slots h4 {
+    font-size: 14px;
+  }
+  
+  .selected-slots {
+    gap: 8px;
+    padding: 12px;
+  }
+  
+  .selected-slot-chip {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  
+  .slot-btn {
+    padding: 8px 12px;
+    font-size: 11px;
+    min-height: 36px;
+  }
+}
+
+/* ===== FORM GROUP SPACING ===== */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+/* ===== EMPTY STATE ===== */
+.selected-slots:empty::before {
+  content: "No time slots selected";
+  color: #999;
+  font-style: italic;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 50px;
+}
+}

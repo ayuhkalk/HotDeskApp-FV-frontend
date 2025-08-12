@@ -1,0 +1,27 @@
+.nav-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.nav-tab {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.nav-tab:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.nav-tab.active {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+}
